@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "enabledManagers": ["dockerfile", "regex"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^Dockerfile$/"],
+      "matchStrings": ["npm install (?<depName>[^@\\s]+)@(?<currentValue>[^\\s]+)"],
+      "datasourceTemplate": "npm"
+    }
+  ],
+  "automerge": false,
+  "minimumReleaseAge": "3 days"
+}
